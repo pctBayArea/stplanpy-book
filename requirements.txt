@@ -1,4 +1,8 @@
 jupyter-book
+geopandas
 matplotlib
+contextily
+mpl_toolkits
 numpy
 ghp-import
+stplanpy

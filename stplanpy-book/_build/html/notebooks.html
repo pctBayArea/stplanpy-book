@@ -1,0 +1,645 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sustainable Transportation Planner for Python &#8212; stplanpy Book</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Markdown Files" href="markdown.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">stplanpy Book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Sustainable Transportation Planner for Python
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/notebooks.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/pctBayArea/stplanpy Book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/pctBayArea/stplanpy Book/issues/new?title=Issue%20on%20page%20%2Fnotebooks.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/pctBayArea/stplanpy Book/main?urlpath=tree/docs/notebooks.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="sustainable-transportation-planner-for-python">
+<h1>Sustainable Transportation Planner for Python<a class="headerlink" href="#sustainable-transportation-planner-for-python" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to stplanpy, the Sustainable Transportation Planner for Python. This Jupyter Notebook shows an example of how to use this Python package. This example focusses on origin-destination (flow) data for Stanford University, Palo Alto, and East Palo Alto. Only commutes in the San Francisco Bay Area are considered.</p>
+<p>Lets start with importing some Python modules. The <code class="docutils literal notranslate"><span class="pre">acs</span></code> module can perform various operations on <a class="reference external" href="https://ctpp.transportation.org/2012-2016-5-year-ctpp/">American Community Survey</a> (ACS) flow data, the <code class="docutils literal notranslate"><span class="pre">geo</span></code> module operates on geometric data (shape files), the <code class="docutils literal notranslate"><span class="pre">srtm</span></code> module can compute elevations from <a class="reference external" href="https://www2.jpl.nasa.gov/srtm/">Shuttle Radar Topography Mission</a> (SRTM) data, the <code class="docutils literal notranslate"><span class="pre">od</span></code> data works on origin-destination lines, the <code class="docutils literal notranslate"><span class="pre">dist</span></code> module provides distributions for mode share computations, the <code class="docutils literal notranslate"><span class="pre">cycle</span></code> module can retrieve route information from the Cycle Streets <a class="reference external" href="https://www.cyclestreets.net/">website</a>, and the <code class="docutils literal notranslate"><span class="pre">route</span></code> module works on route data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1</span> <span class="kn">import</span> <span class="n">make_axes_locatable</span>
+<span class="kn">import</span> <span class="nn">contextily</span> <span class="k">as</span> <span class="nn">ctx</span>
+<span class="kn">from</span> <span class="nn">stplanpy</span> <span class="kn">import</span> <span class="n">acs</span>
+<span class="kn">from</span> <span class="nn">stplanpy</span> <span class="kn">import</span> <span class="n">geo</span>
+<span class="kn">from</span> <span class="nn">stplanpy</span> <span class="kn">import</span> <span class="n">srtm</span>
+<span class="kn">from</span> <span class="nn">stplanpy</span> <span class="kn">import</span> <span class="n">od</span>
+<span class="kn">from</span> <span class="nn">stplanpy</span> <span class="kn">import</span> <span class="n">dist</span>
+<span class="kn">from</span> <span class="nn">stplanpy</span> <span class="kn">import</span> <span class="n">cycle</span>
+<span class="kn">from</span> <span class="nn">stplanpy</span> <span class="kn">import</span> <span class="n">route</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Flow data is read from the example <a class="reference external" href="https://raw.githubusercontent.com/pctBayArea/stplanpy/main/jupyter/od_data.csv">csv data file</a> into a Pandas DataFrame using the <code class="docutils literal notranslate"><span class="pre">read_acs</span></code> function. The <code class="docutils literal notranslate"><span class="pre">clean_acs</span></code> function cleans up the data in the DataFrame. “home” is subtracted from “all”, because people working from home do not make any trips. The category “Car, truck, or van – Drove alone” is renamed to “sov”, Single-occupancy Vehicle. Lastly, “active” transportation, “transit”, and “carpool” columns are created. “orig_taz” and “dest_taz” are the origin and destination Traffic Analysis Zones (TAZ), respectively.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow_data</span> <span class="o">=</span> <span class="n">acs</span><span class="o">.</span><span class="n">read_acs</span><span class="p">(</span><span class="s2">&quot;od_data.csv&quot;</span><span class="p">)</span>
+<span class="n">flow_data</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">clean_acs</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, county geography data is imported into a GeoDataFrame. The <a class="reference external" href="https://github.com/pctBayArea/stplanpy/blob/main/jupyter/ca-county-boundaries.zip?raw=true">County data</a> used in this notebook can be found on Github. Other county and place shape files can be found on the <a class="reference external" href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html">US census website</a>. Traffic Analysis Zone shape files can be found on <a class="reference external" href="https://catalog.data.gov/dataset/tiger-line-shapefile-2011-series-information-file-for-the-2010-census-traffic-analysis-zone-taz">data.gov</a>. Elevation data from the Shuttle Radar Topography Mission (SRTM) can be found on <a class="reference external" href="https://www2.jpl.nasa.gov/srtm/">nasa.gov</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bay Area county codes</span>
+<span class="c1"># 06 001 Alameda County</span>
+<span class="c1"># 06 013 Contra Costa County</span>
+<span class="c1"># 06 041 Marin County</span>
+<span class="c1"># 06 055 Napa County</span>
+<span class="c1"># 06 075 San Francisco County</span>
+<span class="c1"># 06 081 San Mateo County</span>
+<span class="c1"># 06 085 Santa Clara County</span>
+<span class="c1"># 06 095 Solano County</span>
+<span class="c1"># 06 097 Sonoma County</span>
+<span class="n">counties</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;001&quot;</span><span class="p">,</span> <span class="s2">&quot;013&quot;</span><span class="p">,</span> <span class="s2">&quot;041&quot;</span><span class="p">,</span> <span class="s2">&quot;055&quot;</span><span class="p">,</span> <span class="s2">&quot;075&quot;</span><span class="p">,</span> <span class="s2">&quot;081&quot;</span><span class="p">,</span> <span class="s2">&quot;085&quot;</span><span class="p">,</span> <span class="s2">&quot;095&quot;</span><span class="p">,</span> <span class="s2">&quot;097&quot;</span><span class="p">]</span>
+
+<span class="c1"># Read county data</span>
+<span class="n">county</span> <span class="o">=</span> <span class="n">geo</span><span class="o">.</span><span class="n">read_shp</span><span class="p">(</span><span class="s2">&quot;ca-county-boundaries.zip&quot;</span><span class="p">)</span>
+
+<span class="c1"># Keep only San Francisco Bay Area counties</span>
+<span class="n">county</span> <span class="o">=</span> <span class="n">county</span><span class="p">[</span><span class="n">county</span><span class="p">[</span><span class="s2">&quot;countyfp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">counties</span><span class="p">)]</span>
+ 
+<span class="c1"># Select columns to keep</span>
+<span class="n">county</span> <span class="o">=</span> <span class="n">county</span><span class="p">[[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;countyfp&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]]</span>
+
+<span class="c1"># Plot data</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">county</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">county</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLite</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">county</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLabels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;San Francisco Bay Area counties&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_7_0.png" src="_images/notebooks_7_0.png" />
+</div>
+</div>
+<p>After importing the County geometry data, Census Designated Place data is imported. The <a class="reference external" href="https://github.com/pctBayArea/stplanpy/blob/main/jupyter/tl_2020_06_place.zip?raw=true">Place data</a> used in this notebook can be found on Github. Only East Palo Alto, Palo Alto, and Stanford University are kept.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Place codes</span>
+<span class="c1"># 20956 East Palo Alto</span>
+<span class="c1"># 55282 Palo Alto</span>
+<span class="c1"># 73906 Stanford University</span>
+<span class="n">places</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;20956&quot;</span><span class="p">,</span> <span class="s2">&quot;55282&quot;</span><span class="p">,</span> <span class="s2">&quot;73906&quot;</span><span class="p">]</span>
+
+<span class="c1"># Read place data</span>
+<span class="n">place</span> <span class="o">=</span> <span class="n">geo</span><span class="o">.</span><span class="n">read_shp</span><span class="p">(</span><span class="s2">&quot;tl_2020_06_place.zip&quot;</span><span class="p">)</span>
+
+<span class="c1"># Keep only Stanford, Palo Alto, and East Palo Alto</span>
+<span class="n">place</span> <span class="o">=</span> <span class="n">place</span><span class="p">[</span><span class="n">place</span><span class="p">[</span><span class="s2">&quot;placefp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">places</span><span class="p">)]</span>
+
+<span class="c1"># Compute which places lay inside which county</span>
+<span class="n">place</span> <span class="o">=</span> <span class="n">place</span><span class="o">.</span><span class="n">in_county</span><span class="p">(</span><span class="n">county</span><span class="p">)</span>
+
+<span class="c1"># Select columns to keep</span>
+<span class="n">place</span> <span class="o">=</span> <span class="n">place</span><span class="p">[[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;placefp&quot;</span><span class="p">,</span> <span class="s2">&quot;countyfp&quot;</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">]]</span>
+
+<span class="c1"># Plot data</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">place</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">place</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLite</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">place</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLabels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;East Palo Alto, Palo Alto, and Stanford University&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_9_0.png" src="_images/notebooks_9_0.png" />
+</div>
+</div>
+<p>Lastly, Traffic Analysis Zone (TAZ) geometry data is imported and elevations are computed at the TAZ centroids. Some of the centroids are corrected to make sure that they are close to a road. This is needed for the routing website used below. The <a class="reference external" href="https://github.com/pctBayArea/stplanpy/blob/main/jupyter/tl_2011_06_taz10.zip?raw=true">TAZ data</a> and <a class="reference external" href="https://github.com/pctBayArea/stplanpy/blob/main/jupyter/srtm_12_05.zip?raw=true">SRTM data</a>
+used in this notebook can be found on Github.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read taz data</span>
+<span class="n">taz</span> <span class="o">=</span> <span class="n">geo</span><span class="o">.</span><span class="n">read_shp</span><span class="p">(</span><span class="s2">&quot;tl_2011_06_taz10.zip&quot;</span><span class="p">)</span>
+
+<span class="c1"># Rename columns for consistency</span>
+<span class="n">taz</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;countyfp10&quot;</span><span class="p">:</span><span class="s2">&quot;countyfp&quot;</span><span class="p">,</span> <span class="s2">&quot;tazce10&quot;</span><span class="p">:</span><span class="s2">&quot;tazce&quot;</span><span class="p">},</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> 
+
+<span class="c1"># Filter on county codes</span>
+<span class="n">taz</span> <span class="o">=</span> <span class="n">taz</span><span class="p">[</span><span class="n">taz</span><span class="p">[</span><span class="s2">&quot;countyfp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">counties</span><span class="p">)]</span>
+
+<span class="c1"># Compute centroids</span>
+<span class="n">taz_cent</span> <span class="o">=</span> <span class="n">taz</span><span class="o">.</span><span class="n">cent</span><span class="p">()</span>
+
+<span class="c1"># Correct centroid locations so they are close to a road</span>
+<span class="c1"># Google plex</span>
+<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00101155&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.0780525993605</span><span class="p">,</span> <span class="mf">37.42332894065777</span><span class="p">)</span>
+<span class="c1"># Stanford research park</span>
+<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00100480&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.1451249513915</span><span class="p">,</span> <span class="mf">37.40713680668460</span><span class="p">)</span>
+<span class="c1"># Facebook</span>
+<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00102130&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.1487037864525</span><span class="p">,</span> <span class="mf">37.48492337393505</span><span class="p">)</span>
+<span class="c1"># San Antonio watershed</span>
+<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00103321&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">121.8452717956161</span><span class="p">,</span> <span class="mf">37.60284162184939</span><span class="p">)</span>
+<span class="c1"># Tesla</span>
+<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00103023&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">121.9490506527106</span><span class="p">,</span> <span class="mf">37.50254728376085</span><span class="p">)</span>
+<span class="c1"># Hayward</span>
+<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00103112&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.1225131055348</span><span class="p">,</span> <span class="mf">37.62298440136487</span><span class="p">)</span>
+
+<span class="c1"># Compute which taz lay inside a place and which part</span>
+<span class="n">taz</span> <span class="o">=</span> <span class="n">taz</span><span class="o">.</span><span class="n">in_place</span><span class="p">(</span><span class="n">place</span><span class="p">)</span>
+
+<span class="c1"># Compute elevations</span>
+<span class="n">taz_cent</span> <span class="o">=</span> <span class="n">taz_cent</span><span class="o">.</span><span class="n">elev</span><span class="p">(</span><span class="s2">&quot;srtm_12_05.zip&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot data</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;San Francisco Bay Area traffic analysis zones (taz) centroids with elevation&quot;</span><span class="p">)</span>
+<span class="n">divider</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">cax</span> <span class="o">=</span> <span class="n">divider</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;5%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">taz</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">taz_cent</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;elevation&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">taz</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLite</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">taz</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLabels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_11_0.png" src="_images/notebooks_11_0.png" />
+</div>
+</div>
+<p>Modify the <code class="docutils literal notranslate"><span class="pre">flow_data</span></code> DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add county and place codes to data frame. This data is used to compute mode share in counties and places</span>
+<span class="n">flow_data</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">orig_dest</span><span class="p">(</span><span class="n">taz</span><span class="p">)</span>
+
+<span class="c1"># Compute origin destination lines, distances, and gradient</span>
+<span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">od_lines</span><span class="p">(</span><span class="n">taz_cent</span><span class="p">)</span>
+<span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">distances</span><span class="p">()</span>
+<span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;gradient&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">taz_cent</span><span class="p">)</span>
+
+<span class="c1"># Compute go_dutch scenario</span>
+<span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">go_dutch</span><span class="p">()</span>
+
+<span class="c1"># Convert to GeoDataFrame</span>
+<span class="n">flow_data</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">flow_data</span><span class="p">)</span>
+<span class="n">flow_data</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">set_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:6933&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot origin destination lines for distances less than 10km</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">taz</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">taz</span><span class="p">[</span><span class="s2">&quot;placefp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">places</span><span class="p">)]</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">flow_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10000</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;distance&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">flow_data</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLite</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">flow_data</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLabels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Origin-destination flow lines less than 10km&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_13_0.png" src="_images/notebooks_13_0.png" />
+</div>
+</div>
+<p>Compute mode shares:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute &quot;bike&quot;, and &quot;go_dutch&quot; mode shares</span>
+<span class="n">taz</span><span class="p">[[</span><span class="s2">&quot;bike&quot;</span><span class="p">,</span> <span class="s2">&quot;go_dutch&quot;</span><span class="p">,</span> <span class="s2">&quot;all&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">taz</span><span class="o">.</span><span class="n">mode_share</span><span class="p">(</span><span class="n">flow_data</span><span class="p">)</span>
+<span class="n">place</span><span class="p">[[</span><span class="s2">&quot;bike&quot;</span><span class="p">,</span> <span class="s2">&quot;go_dutch&quot;</span><span class="p">,</span> <span class="s2">&quot;all&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">place</span><span class="o">.</span><span class="n">mode_share</span><span class="p">(</span><span class="n">flow_data</span><span class="p">)</span>
+
+<span class="c1"># Compute mode share for trips shorter than 10km (6 miles)</span>
+<span class="n">taz</span><span class="p">[[</span><span class="s2">&quot;bike10&quot;</span><span class="p">,</span> <span class="s2">&quot;all10&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">taz</span><span class="o">.</span><span class="n">mode_share</span><span class="p">(</span><span class="n">flow_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10000</span><span class="p">],</span> <span class="n">modes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bike&quot;</span><span class="p">])</span>
+<span class="n">place</span><span class="p">[[</span><span class="s2">&quot;bike10&quot;</span><span class="p">,</span> <span class="s2">&quot;all10&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">place</span><span class="o">.</span><span class="n">mode_share</span><span class="p">(</span><span class="n">flow_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10000</span><span class="p">],</span> <span class="n">modes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bike&quot;</span><span class="p">])</span>
+
+<span class="c1"># Plot data</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">taz</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">taz</span><span class="p">[</span><span class="s2">&quot;placefp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">places</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;bike&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">taz</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLite</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">taz</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLabels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bicycle mode share of traffic analysis zones in East Palo Alto, Palo Alto, and Stanford Univeristy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Show mode shares</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">place</span><span class="p">[[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;bike&quot;</span><span class="p">,</span> <span class="s2">&quot;go_dutch&quot;</span><span class="p">,</span> <span class="s2">&quot;bike10&quot;</span><span class="p">,</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="s2">&quot;all10&quot;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_15_0.png" src="_images/notebooks_15_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             name      bike  go_dutch    bike10      all    all10
+0       Palo Alto  0.041619  0.144649  0.109430  53581.0  18569.0
+2        Stanford  0.184371  0.160222  0.391057  13104.0   5636.0
+5  East Palo Alto  0.039155  0.220233  0.071788   5210.0   2786.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Compute routes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select routes shorter than 25km</span>
+<span class="n">flow_data</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">25000</span><span class="p">]</span>
+
+<span class="c1"># Read the cyclestreets api key</span>
+<span class="n">cyclestreets_key</span> <span class="o">=</span> <span class="n">cycle</span><span class="o">.</span><span class="n">read_key</span><span class="p">()</span>
+
+<span class="c1"># Compute routes</span>
+<span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">route_lines</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">cyclestreets_key</span><span class="p">)</span>
+<span class="n">flow_data</span><span class="o">.</span><span class="n">find_cent</span><span class="p">()</span>
+
+<span class="c1"># Compute distances, gradients, and directness </span>
+<span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">distances</span><span class="p">()</span>
+<span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;gradient&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">taz_cent</span><span class="p">)</span>
+<span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;directness&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">directness</span><span class="p">()</span>
+
+<span class="c1"># Compute go_dutch scenario</span>
+<span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">go_dutch</span><span class="p">()</span>
+
+<span class="c1"># Convert to GeoDataFrame</span>
+<span class="n">flow_data</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">flow_data</span><span class="p">)</span>
+<span class="n">flow_data</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">set_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:6933&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot routes</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">taz</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">taz</span><span class="p">[</span><span class="s2">&quot;placefp&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">places</span><span class="p">)]</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">flow_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;directness&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">flow_data</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLite</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">flow_data</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLabels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;All routes for direct distances shorter than 25km &quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_17_0.png" src="_images/notebooks_17_0.png" />
+</div>
+</div>
+<p>Compute East Palo Alto network:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Place codes</span>
+<span class="c1"># 20956 East Palo Alto</span>
+<span class="c1"># 55282 Palo Alto</span>
+<span class="c1"># 73906 Stanford University</span>
+<span class="n">epa_network</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">to_frm</span><span class="p">(</span><span class="s2">&quot;20956&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reduce</span><span class="p">()</span>
+
+<span class="c1"># Compute linewidth</span>
+<span class="n">epa_network</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">15</span><span class="o">*</span><span class="n">epa_network</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">epa_network</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="c1"># Plot network</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">11787000</span><span class="p">,</span><span class="o">-</span><span class="mi">11781500</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">4451500</span><span class="p">,</span> <span class="mi">4456000</span><span class="p">])</span>
+<span class="n">taz</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">taz</span><span class="p">[</span><span class="s2">&quot;placefp&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;20956&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">place</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">place</span><span class="p">[</span><span class="s2">&quot;placefp&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;20956&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">epa_network</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">epa_network</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">])</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">epa_network</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLite</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">epa_network</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLabels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bicycle routes to and from East Palo Alto under the &#39;Go Dutch&#39; scenario&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_19_0.png" src="_images/notebooks_19_0.png" />
+</div>
+</div>
+<p>Palo Alto</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Place codes</span>
+<span class="c1"># 20956 East Palo Alto</span>
+<span class="c1"># 55282 Palo Alto</span>
+<span class="c1"># 73906 Stanford University</span>
+<span class="n">pa_network</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">to_frm</span><span class="p">(</span><span class="s2">&quot;55282&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reduce</span><span class="p">()</span>
+
+<span class="c1"># Compute linewidth</span>
+<span class="n">pa_network</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">15</span><span class="o">*</span><span class="n">pa_network</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">pa_network</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="c1"># Plot network</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">11789869</span><span class="p">,</span><span class="o">-</span><span class="mi">11780640</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">4446000</span><span class="p">,</span> <span class="mi">4454000</span><span class="p">])</span>
+<span class="n">taz</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">taz</span><span class="p">[</span><span class="s2">&quot;placefp&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;55282&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">place</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">place</span><span class="p">[</span><span class="s2">&quot;placefp&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;55282&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">pa_network</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">pa_network</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">])</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">pa_network</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLite</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">pa_network</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLabels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bicycle routes to and from Palo Alto under the &#39;Go Dutch&#39; scenario&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_21_0.png" src="_images/notebooks_21_0.png" />
+</div>
+</div>
+<p>Stanford University</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Place codes</span>
+<span class="c1"># 20956 East Palo Alto</span>
+<span class="c1"># 55282 Palo Alto</span>
+<span class="c1"># 73906 Stanford University</span>
+<span class="n">su_network</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">to_frm</span><span class="p">(</span><span class="s2">&quot;73906&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reduce</span><span class="p">()</span>
+
+<span class="c1"># Compute linewidth</span>
+<span class="n">su_network</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">15</span><span class="o">*</span><span class="n">su_network</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">su_network</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="c1"># Plot network</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">11790000</span><span class="p">,</span><span class="o">-</span><span class="mi">11784000</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">4448000</span><span class="p">,</span> <span class="mi">4452000</span><span class="p">])</span>
+<span class="n">taz</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">taz</span><span class="p">[</span><span class="s2">&quot;placefp&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;73906&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">place</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">place</span><span class="p">[</span><span class="s2">&quot;placefp&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;73906&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">su_network</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">su_network</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">])</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">su_network</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLite</span><span class="p">)</span>
+<span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">su_network</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLabels</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bicycle routes to and from Stanford University under the &#39;Go Dutch&#39; scenario&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_23_0.png" src="_images/notebooks_23_0.png" />
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="markdown.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Markdown Files</p>
+        </div>
+    </a>
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Arnout Boelens<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
