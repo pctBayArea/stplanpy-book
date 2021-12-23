@@ -1,16 +1,12 @@
-# Welcome to your Jupyter Book
+# Sustainable Transportation Planner for Python
 
-This is a small sample book to give you a feel for how book content is
-structured.
+Welcome to stplanpy, the Sustainable Transportation Planner for Python. This
+package is inspired by stplanr, a package for sustainable transport planning
+with R {cite}`lovelace2017`. This Jupyter Book shows an example of how to use
+this Python package. The focus is on origin-destination (flow) data for Stanford
+University, Palo Alto, and East Palo Alto. Only commutes in the San Francisco
+Bay Area are considered.
 
-:::{note}
-Here is a note!
-:::
-
-And here is a code block:
-
+## References
+```{bibliography}
 ```
-e = mc^2
-```
-
-Check out the content pages bundled with this sample book to see more.

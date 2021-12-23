@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# ## Sustainable Transportation Planner for Python
-
-# Welcome to stplanpy, the Sustainable Transportation Planner for Python. This Jupyter Notebook shows an example of how to use this Python package. This example focusses on origin-destination (flow) data for Stanford University, Palo Alto, and East Palo Alto. Only commutes in the San Francisco Bay Area are considered.
+# # Notebook example
 
 # Lets start with importing some Python modules. The `acs` module can perform various operations on [American Community Survey](https://ctpp.transportation.org/2012-2016-5-year-ctpp/) (ACS) flow data, the `geo` module operates on geometric data (shape files), the `srtm` module can compute elevations from [Shuttle Radar Topography Mission](https://www2.jpl.nasa.gov/srtm/) (SRTM) data, the `od` data works on origin-destination lines, the `dist` module provides distributions for mode share computations, the `cycle` module can retrieve route information from the Cycle Streets [website](https://www.cyclestreets.net/), and the `route` module works on route data.
 
@@ -32,7 +30,7 @@ flow_data = acs.read_acs("od_data.csv")
 flow_data = flow_data.clean_acs()
 
 
-# Next, county geography data is imported into a GeoDataFrame. The [County data](https://github.com/pctBayArea/stplanpy/blob/main/jupyter/ca-county-boundaries.zip?raw=true) used in this notebook can be found on Github. Other county and place shape files can be found on the [US census website](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html). Traffic Analysis Zone shape files can be found on [data.gov](https://catalog.data.gov/dataset/tiger-line-shapefile-2011-series-information-file-for-the-2010-census-traffic-analysis-zone-taz). Elevation data from the Shuttle Radar Topography Mission (SRTM) can be found on [nasa.gov](https://www2.jpl.nasa.gov/srtm/).
+# Next, county geography data is imported into a GeoDataFrame. The [County data](https://github.com/pctBayArea/stplanpy/blob/main/jupyter/ca-county-boundaries.zip?raw=true) used in this notebook can be found on Github. Other county and place shape files can be found on the [US census website](https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html). Traffic Analysis Zone shape files can be found on [data.gov](https://catalog.data.gov/dataset/tiger-line-shapefile-2011-series-information-file-for-the-2010-census-traffic-analysis-zone-taz). Elevation data from the Shuttle Radar Topography Mission (SRTM) can be found on [nasa.gov](https://www2.jpl.nasa.gov/srtm/). Only San Franciso Bay Area Counties are kept.
 
 # In[3]:
 
@@ -69,7 +67,8 @@ plt.axis('off')
 plt.show()
 
 
-# After importing the County geometry data, Census Designated Place data is imported. The [Place data](https://github.com/pctBayArea/stplanpy/blob/main/jupyter/tl_2020_06_place.zip?raw=true) used in this notebook can be found on Github. Only East Palo Alto, Palo Alto, and Stanford University are kept.
+# After importing the County geometry data, Census Designated Place data is imported. The [Place data](https://github.com/pctBayArea/stplanpy/blob/main/jupyter/tl_2020_06_place.zip?raw=true) used in this notebook can be found on Github. Only East Palo Alto, Palo Alto, and Stanford University are kept. The `in_county` function determines in which county different places are located.
+# 
 
 # In[4]:
 
@@ -103,8 +102,8 @@ plt.axis('off')
 plt.show()
 
 
-# Lastly, Traffic Analysis Zone (TAZ) geometry data is imported and elevations are computed at the TAZ centroids. Some of the centroids are corrected to make sure that they are close to a road. This is needed for the routing website used below. The [TAZ data](https://github.com/pctBayArea/stplanpy/blob/main/jupyter/tl_2011_06_taz10.zip?raw=true) and [SRTM data](https://github.com/pctBayArea/stplanpy/blob/main/jupyter/srtm_12_05.zip?raw=true)
-# used in this notebook can be found on Github.
+# Lastly, Traffic Analysis Zone (TAZ) geometry data is imported and elevations are computed at the TAZ centroids. Some of the centroids are corrected to make sure that they are close to a road. This is needed for the routing between different zones below. The [TAZ data](https://github.com/pctBayArea/stplanpy/blob/main/jupyter/tl_2011_06_taz10.zip?raw=true) and [SRTM data](https://github.com/pctBayArea/stplanpy/blob/main/jupyter/srtm_12_05.zip?raw=true)
+# used in this notebook can be found on Github. The `in_place` function determines in which place a TAZ is located.
 
 # In[5]:
 
@@ -156,7 +155,7 @@ ctx.add_basemap(ax, crs=taz.crs, source=ctx.providers.Stamen.TonerLabels)
 plt.show()
 
 
-# Modify the `flow_data` DataFrame:
+# Now the `orig_dest` function adds origin and destination county and place codes do the `flow_data` DataFrame. The `od_lines` function adds origin-destination lines. The `go_dutch` function computes the bicycle mode share if people biked as much as people in the Netherlands do, corrected for distance and hillyness.
 
 # In[6]:
 
@@ -164,7 +163,7 @@ plt.show()
 # Add county and place codes to data frame. This data is used to compute mode share in counties and places
 flow_data = flow_data.orig_dest(taz)
 
-# Compute origin destination lines, distances, and gradient
+# Compute origin-destination lines, distances, and gradient
 flow_data["geometry"] = flow_data.od_lines(taz_cent)
 flow_data["distance"] = flow_data.distances()
 flow_data["gradient"] = flow_data.gradient(taz_cent)
@@ -188,7 +187,7 @@ plt.axis('off')
 plt.show()
 
 
-# Compute mode shares:
+# The `mode_share` function computes the mode share for Traffic Analysis Zones and places. The `bike10` column contains the bicycle mode share for trips shorter than 10km (6 miles) and `go_dutch10` the mode share for the "Go Dutch" scenario.
 
 # In[7]:
 
@@ -198,8 +197,8 @@ taz[["bike", "go_dutch", "all"]] = taz.mode_share(flow_data)
 place[["bike", "go_dutch", "all"]] = place.mode_share(flow_data)
 
 # Compute mode share for trips shorter than 10km (6 miles)
-taz[["bike10", "all10"]] = taz.mode_share(flow_data.loc[flow_data["distance"] <= 10000], modes=["bike"])
-place[["bike10", "all10"]] = place.mode_share(flow_data.loc[flow_data["distance"] <= 10000], modes=["bike"])
+taz[["bike10", "go_dutch10", "all10"]] = taz.mode_share(flow_data.loc[flow_data["distance"] <= 10000])
+place[["bike10", "go_dutch10", "all10"]] = place.mode_share(flow_data.loc[flow_data["distance"] <= 10000])
 
 # Plot data
 fig, ax = plt.subplots(figsize=(10,10))
@@ -212,10 +211,10 @@ plt.axis('off')
 plt.show()
 
 # Show mode shares
-print(place[["name", "bike", "go_dutch", "bike10", "all", "all10"]])
+print(place[["name", "bike", "go_dutch", "bike10", "go_dutch10", "all", "all10"]])
 
 
-# Compute routes:
+# The `route_lines` function computes the routes between Traffic Analysis Zones using the Cycle Streets routing engine. The `directness` function divides the length of a route by the length of the equivalend origin-destination line. 
 
 # In[8]:
 
@@ -254,7 +253,7 @@ plt.axis('off')
 plt.show()
 
 
-# Compute East Palo Alto network:
+# The `reduce` function combines all the different routes in a GeoDataFrame and reduces them to a single network. At each segment where routes overlap individual modes of transportation are summed up. Here the East Palo Alto network is computed. The line width is set by the "Go dutch" scenario.
 
 # In[9]:
 
@@ -283,7 +282,7 @@ plt.axis('off')
 plt.show()
 
 
-# Palo Alto
+# The Palo Alto network.
 
 # In[10]:
 
@@ -312,7 +311,7 @@ plt.axis('off')
 plt.show()
 
 
-# Stanford University
+# The Stanford University network.
 
 # In[11]:
 
@@ -339,10 +338,4 @@ ctx.add_basemap(ax, crs=su_network.crs, source=ctx.providers.Stamen.TonerLabels)
 plt.title("Bicycle routes to and from Stanford University under the 'Go Dutch' scenario")
 plt.axis('off')
 plt.show()
-
-
-# In[ ]:
-
-
-
 

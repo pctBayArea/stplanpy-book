@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sustainable Transportation Planner for Python &#8212; stplanpy Book</title>
+    <title>Notebook example &#8212; stplanpy Book</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,7 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Markdown Files" href="markdown.html" />
+    <link rel="prev" title="Sustainable Transportation Planner for Python" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -91,19 +91,14 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
-   Welcome to your Jupyter Book
+   Sustainable Transportation Planner for Python
   </a>
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown Files
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Sustainable Transportation Planner for Python
+   Notebook example
   </a>
  </li>
 </ul>
@@ -213,9 +208,8 @@
         
               <div>
                 
-  <div class="section" id="sustainable-transportation-planner-for-python">
-<h1>Sustainable Transportation Planner for Python<a class="headerlink" href="#sustainable-transportation-planner-for-python" title="Permalink to this headline">¶</a></h1>
-<p>Welcome to stplanpy, the Sustainable Transportation Planner for Python. This Jupyter Notebook shows an example of how to use this Python package. This example focusses on origin-destination (flow) data for Stanford University, Palo Alto, and East Palo Alto. Only commutes in the San Francisco Bay Area are considered.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="notebook-example">
+<h1>Notebook example<a class="headerlink" href="#notebook-example" title="Permalink to this headline">¶</a></h1>
 <p>Lets start with importing some Python modules. The <code class="docutils literal notranslate"><span class="pre">acs</span></code> module can perform various operations on <a class="reference external" href="https://ctpp.transportation.org/2012-2016-5-year-ctpp/">American Community Survey</a> (ACS) flow data, the <code class="docutils literal notranslate"><span class="pre">geo</span></code> module operates on geometric data (shape files), the <code class="docutils literal notranslate"><span class="pre">srtm</span></code> module can compute elevations from <a class="reference external" href="https://www2.jpl.nasa.gov/srtm/">Shuttle Radar Topography Mission</a> (SRTM) data, the <code class="docutils literal notranslate"><span class="pre">od</span></code> data works on origin-destination lines, the <code class="docutils literal notranslate"><span class="pre">dist</span></code> module provides distributions for mode share computations, the <code class="docutils literal notranslate"><span class="pre">cycle</span></code> module can retrieve route information from the Cycle Streets <a class="reference external" href="https://www.cyclestreets.net/">website</a>, and the <code class="docutils literal notranslate"><span class="pre">route</span></code> module works on route data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -243,7 +237,7 @@
 </div>
 </div>
 </div>
-<p>Next, county geography data is imported into a GeoDataFrame. The <a class="reference external" href="https://github.com/pctBayArea/stplanpy/blob/main/jupyter/ca-county-boundaries.zip?raw=true">County data</a> used in this notebook can be found on Github. Other county and place shape files can be found on the <a class="reference external" href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html">US census website</a>. Traffic Analysis Zone shape files can be found on <a class="reference external" href="https://catalog.data.gov/dataset/tiger-line-shapefile-2011-series-information-file-for-the-2010-census-traffic-analysis-zone-taz">data.gov</a>. Elevation data from the Shuttle Radar Topography Mission (SRTM) can be found on <a class="reference external" href="https://www2.jpl.nasa.gov/srtm/">nasa.gov</a>.</p>
+<p>Next, county geography data is imported into a GeoDataFrame. The <a class="reference external" href="https://github.com/pctBayArea/stplanpy/blob/main/jupyter/ca-county-boundaries.zip?raw=true">County data</a> used in this notebook can be found on Github. Other county and place shape files can be found on the <a class="reference external" href="https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.html">US census website</a>. Traffic Analysis Zone shape files can be found on <a class="reference external" href="https://catalog.data.gov/dataset/tiger-line-shapefile-2011-series-information-file-for-the-2010-census-traffic-analysis-zone-taz">data.gov</a>. Elevation data from the Shuttle Radar Topography Mission (SRTM) can be found on <a class="reference external" href="https://www2.jpl.nasa.gov/srtm/">nasa.gov</a>. Only San Franciso Bay Area Counties are kept.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bay Area county codes</span>
@@ -280,10 +274,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/notebooks_7_0.png" src="_images/notebooks_7_0.png" />
+<img alt="_images/notebooks_6_0.png" src="_images/notebooks_6_0.png" />
 </div>
 </div>
-<p>After importing the County geometry data, Census Designated Place data is imported. The <a class="reference external" href="https://github.com/pctBayArea/stplanpy/blob/main/jupyter/tl_2020_06_place.zip?raw=true">Place data</a> used in this notebook can be found on Github. Only East Palo Alto, Palo Alto, and Stanford University are kept.</p>
+<p>After importing the County geometry data, Census Designated Place data is imported. The <a class="reference external" href="https://github.com/pctBayArea/stplanpy/blob/main/jupyter/tl_2020_06_place.zip?raw=true">Place data</a> used in this notebook can be found on Github. Only East Palo Alto, Palo Alto, and Stanford University are kept. The <code class="docutils literal notranslate"><span class="pre">in_county</span></code> function determines in which county different places are located.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Place codes</span>
@@ -317,11 +311,11 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/notebooks_9_0.png" src="_images/notebooks_9_0.png" />
+<img alt="_images/notebooks_8_0.png" src="_images/notebooks_8_0.png" />
 </div>
 </div>
-<p>Lastly, Traffic Analysis Zone (TAZ) geometry data is imported and elevations are computed at the TAZ centroids. Some of the centroids are corrected to make sure that they are close to a road. This is needed for the routing website used below. The <a class="reference external" href="https://github.com/pctBayArea/stplanpy/blob/main/jupyter/tl_2011_06_taz10.zip?raw=true">TAZ data</a> and <a class="reference external" href="https://github.com/pctBayArea/stplanpy/blob/main/jupyter/srtm_12_05.zip?raw=true">SRTM data</a>
-used in this notebook can be found on Github.</p>
+<p>Lastly, Traffic Analysis Zone (TAZ) geometry data is imported and elevations are computed at the TAZ centroids. Some of the centroids are corrected to make sure that they are close to a road. This is needed for the routing between different zones below. The <a class="reference external" href="https://github.com/pctBayArea/stplanpy/blob/main/jupyter/tl_2011_06_taz10.zip?raw=true">TAZ data</a> and <a class="reference external" href="https://github.com/pctBayArea/stplanpy/blob/main/jupyter/srtm_12_05.zip?raw=true">SRTM data</a>
+used in this notebook can be found on Github. The <code class="docutils literal notranslate"><span class="pre">in_place</span></code> function determines in which place a TAZ is located.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read taz data</span>
@@ -373,16 +367,16 @@ used in this notebook can be found on Github.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/notebooks_11_0.png" src="_images/notebooks_11_0.png" />
+<img alt="_images/notebooks_10_0.png" src="_images/notebooks_10_0.png" />
 </div>
 </div>
-<p>Modify the <code class="docutils literal notranslate"><span class="pre">flow_data</span></code> DataFrame:</p>
+<p>Now the <code class="docutils literal notranslate"><span class="pre">orig_dest</span></code> function adds origin and destination county and place codes do the <code class="docutils literal notranslate"><span class="pre">flow_data</span></code> DataFrame. The <code class="docutils literal notranslate"><span class="pre">od_lines</span></code> function adds origin-destination lines. The <code class="docutils literal notranslate"><span class="pre">go_dutch</span></code> function computes the bicycle mode share if people biked as much as people in the Netherlands do, corrected for distance and hillyness.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add county and place codes to data frame. This data is used to compute mode share in counties and places</span>
 <span class="n">flow_data</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">orig_dest</span><span class="p">(</span><span class="n">taz</span><span class="p">)</span>
 
-<span class="c1"># Compute origin destination lines, distances, and gradient</span>
+<span class="c1"># Compute origin-destination lines, distances, and gradient</span>
 <span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">od_lines</span><span class="p">(</span><span class="n">taz_cent</span><span class="p">)</span>
 <span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">distances</span><span class="p">()</span>
 <span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;gradient&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">taz_cent</span><span class="p">)</span>
@@ -408,10 +402,10 @@ used in this notebook can be found on Github.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/notebooks_13_0.png" src="_images/notebooks_13_0.png" />
+<img alt="_images/notebooks_12_0.png" src="_images/notebooks_12_0.png" />
 </div>
 </div>
-<p>Compute mode shares:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">mode_share</span></code> function computes the mode share for Traffic Analysis Zones and places. The <code class="docutils literal notranslate"><span class="pre">bike10</span></code> column contains the bicycle mode share for trips shorter than 10km (6 miles) and <code class="docutils literal notranslate"><span class="pre">go_dutch10</span></code> the mode share for the “Go Dutch” scenario.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute &quot;bike&quot;, and &quot;go_dutch&quot; mode shares</span>
@@ -419,8 +413,8 @@ used in this notebook can be found on Github.</p>
 <span class="n">place</span><span class="p">[[</span><span class="s2">&quot;bike&quot;</span><span class="p">,</span> <span class="s2">&quot;go_dutch&quot;</span><span class="p">,</span> <span class="s2">&quot;all&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">place</span><span class="o">.</span><span class="n">mode_share</span><span class="p">(</span><span class="n">flow_data</span><span class="p">)</span>
 
 <span class="c1"># Compute mode share for trips shorter than 10km (6 miles)</span>
-<span class="n">taz</span><span class="p">[[</span><span class="s2">&quot;bike10&quot;</span><span class="p">,</span> <span class="s2">&quot;all10&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">taz</span><span class="o">.</span><span class="n">mode_share</span><span class="p">(</span><span class="n">flow_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10000</span><span class="p">],</span> <span class="n">modes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bike&quot;</span><span class="p">])</span>
-<span class="n">place</span><span class="p">[[</span><span class="s2">&quot;bike10&quot;</span><span class="p">,</span> <span class="s2">&quot;all10&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">place</span><span class="o">.</span><span class="n">mode_share</span><span class="p">(</span><span class="n">flow_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10000</span><span class="p">],</span> <span class="n">modes</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bike&quot;</span><span class="p">])</span>
+<span class="n">taz</span><span class="p">[[</span><span class="s2">&quot;bike10&quot;</span><span class="p">,</span> <span class="s2">&quot;go_dutch10&quot;</span><span class="p">,</span> <span class="s2">&quot;all10&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">taz</span><span class="o">.</span><span class="n">mode_share</span><span class="p">(</span><span class="n">flow_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10000</span><span class="p">])</span>
+<span class="n">place</span><span class="p">[[</span><span class="s2">&quot;bike10&quot;</span><span class="p">,</span> <span class="s2">&quot;go_dutch10&quot;</span><span class="p">,</span> <span class="s2">&quot;all10&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">place</span><span class="o">.</span><span class="n">mode_share</span><span class="p">(</span><span class="n">flow_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">10000</span><span class="p">])</span>
 
 <span class="c1"># Plot data</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
@@ -433,21 +427,21 @@ used in this notebook can be found on Github.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># Show mode shares</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">place</span><span class="p">[[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;bike&quot;</span><span class="p">,</span> <span class="s2">&quot;go_dutch&quot;</span><span class="p">,</span> <span class="s2">&quot;bike10&quot;</span><span class="p">,</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="s2">&quot;all10&quot;</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">place</span><span class="p">[[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;bike&quot;</span><span class="p">,</span> <span class="s2">&quot;go_dutch&quot;</span><span class="p">,</span> <span class="s2">&quot;bike10&quot;</span><span class="p">,</span> <span class="s2">&quot;go_dutch10&quot;</span><span class="p">,</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="s2">&quot;all10&quot;</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/notebooks_15_0.png" src="_images/notebooks_15_0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             name      bike  go_dutch    bike10      all    all10
-0       Palo Alto  0.041619  0.144649  0.109430  53581.0  18569.0
-2        Stanford  0.184371  0.160222  0.391057  13104.0   5636.0
-5  East Palo Alto  0.039155  0.220233  0.071788   5210.0   2786.0
+<img alt="_images/notebooks_14_0.png" src="_images/notebooks_14_0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             name      bike  go_dutch    bike10  go_dutch10      all    all10
+0       Palo Alto  0.041619  0.144649  0.109430    0.350558  53581.0  18569.0
+2        Stanford  0.184371  0.160222  0.391057    0.333933  13104.0   5636.0
+5  East Palo Alto  0.039155  0.220233  0.071788    0.369756   5210.0   2786.0
 </pre></div>
 </div>
 </div>
 </div>
-<p>Compute routes:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">route_lines</span></code> function computes the routes between Traffic Analysis Zones using the Cycle Streets routing engine. The <code class="docutils literal notranslate"><span class="pre">directness</span></code> function divides the length of a route by the length of the equivalend origin-destination line.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select routes shorter than 25km</span>
@@ -486,10 +480,10 @@ used in this notebook can be found on Github.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/notebooks_17_0.png" src="_images/notebooks_17_0.png" />
+<img alt="_images/notebooks_16_0.png" src="_images/notebooks_16_0.png" />
 </div>
 </div>
-<p>Compute East Palo Alto network:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">reduce</span></code> function combines all the different routes in a GeoDataFrame and reduces them to a single network. At each segment where routes overlap individual modes of transportation are summed up. Here the East Palo Alto network is computed. The line width is set by the “Go dutch” scenario.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Place codes</span>
@@ -518,10 +512,10 @@ used in this notebook can be found on Github.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/notebooks_19_0.png" src="_images/notebooks_19_0.png" />
+<img alt="_images/notebooks_18_0.png" src="_images/notebooks_18_0.png" />
 </div>
 </div>
-<p>Palo Alto</p>
+<p>The Palo Alto network.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Place codes</span>
@@ -550,10 +544,10 @@ used in this notebook can be found on Github.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/notebooks_21_0.png" src="_images/notebooks_21_0.png" />
+<img alt="_images/notebooks_20_0.png" src="_images/notebooks_20_0.png" />
 </div>
 </div>
-<p>Stanford University</p>
+<p>The Stanford University network.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Place codes</span>
@@ -582,7 +576,7 @@ used in this notebook can be found on Github.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/notebooks_23_0.png" src="_images/notebooks_23_0.png" />
+<img alt="_images/notebooks_22_0.png" src="_images/notebooks_22_0.png" />
 </div>
 </div>
 </div>
@@ -612,11 +606,11 @@ used in this notebook can be found on Github.</p>
         
             <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="markdown.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Markdown Files</p>
+            <p class="prev-next-title">Sustainable Transportation Planner for Python</p>
         </div>
     </a>
 </div>
