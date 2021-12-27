@@ -122,17 +122,21 @@ taz_cent = taz.cent()
 
 # Correct centroid locations so they are close to a road
 # Google plex
-taz_cent.corr_cent("00101155", -122.0780525993605, 37.42332894065777)
+taz_cent.corr_cent("00101155", -122.078052, 37.423328)
 # Stanford research park
-taz_cent.corr_cent("00100480", -122.1451249513915, 37.40713680668460)
+taz_cent.corr_cent("00100480", -122.145124, 37.407136)
 # Facebook
-taz_cent.corr_cent("00102130", -122.1487037864525, 37.48492337393505)
+taz_cent.corr_cent("00102130", -122.148703, 37.484923)
 # San Antonio watershed
-taz_cent.corr_cent("00103321", -121.8452717956161, 37.60284162184939)
+taz_cent.corr_cent("00103321", -121.845271, 37.602841)
 # Tesla
-taz_cent.corr_cent("00103023", -121.9490506527106, 37.50254728376085)
+taz_cent.corr_cent("00103023", -121.949050, 37.502547)
 # Hayward
-taz_cent.corr_cent("00103112", -122.1225131055348, 37.62298440136487)
+taz_cent.corr_cent("00103112", -122.122513, 37.622984)
+# Pacifica 
+taz_cent.corr_cent("00102160", -122.483845, 37.611063)
+# Gilroy
+taz_cent.corr_cent("00101057", -121.5119226,37.025154)
 
 # Compute which taz lay inside a place and which part
 taz = taz.in_place(place)
@@ -170,10 +174,6 @@ flow_data["gradient"] = flow_data.gradient(taz_cent)
 
 # Compute go_dutch scenario
 flow_data["go_dutch"] = flow_data.go_dutch()
-
-# Convert to GeoDataFrame
-flow_data = gpd.GeoDataFrame(flow_data)
-flow_data = flow_data.set_crs("EPSG:6933")
 
 # Plot origin destination lines for distances less than 10km
 fig, ax = plt.subplots(figsize=(16,10))
@@ -219,15 +219,14 @@ print(place[["name", "bike", "go_dutch", "bike10", "go_dutch10", "all", "all10"]
 # In[8]:
 
 
-# Select routes shorter than 25km
-flow_data = flow_data.loc[flow_data["distance"] <= 25000]
+# Remove TAZ without a cycling route
+flow_data = flow_data.rm_taz("00103321")
 
-# Read the cyclestreets api key
+# Read the Cycle Streets API key
 cyclestreets_key = cycle.read_key()
 
 # Compute routes
-flow_data["geometry"] = flow_data.route_lines(api_key=cyclestreets_key)
-flow_data.find_cent()
+flow_data["geometry"] = flow_data.routes(api_key=cyclestreets_key)
 
 # Compute distances, gradients, and directness 
 flow_data["distance"] = flow_data.distances()
@@ -237,10 +236,6 @@ flow_data["directness"] = flow_data.directness()
 # Compute go_dutch scenario
 flow_data["go_dutch"] = flow_data.go_dutch()
 
-# Convert to GeoDataFrame
-flow_data = gpd.GeoDataFrame(flow_data)
-flow_data = flow_data.set_crs("EPSG:6933")
-
 # Plot routes
 fig, ax = plt.subplots(figsize=(16,10))
 ax.set_aspect("equal")
@@ -248,12 +243,12 @@ taz.loc[taz["placefp"].isin(places)].boundary.plot(ax=ax, edgecolor='gray', line
 flow_data.plot(ax=ax, column="directness", linewidth=0.5, legend=True)
 ctx.add_basemap(ax, crs=flow_data.crs, source=ctx.providers.Stamen.TonerLite)
 ctx.add_basemap(ax, crs=flow_data.crs, source=ctx.providers.Stamen.TonerLabels)
-plt.title("All routes for direct distances shorter than 25km ")
+plt.title("All bicycle routes")
 plt.axis('off')
 plt.show()
 
 
-# The `reduce` function combines all the different routes in a GeoDataFrame and reduces them to a single network. At each segment where routes overlap individual modes of transportation are summed up. Here the East Palo Alto network is computed. The line width is set by the "Go dutch" scenario.
+# The `network` function combines all the different routes in a GeoDataFrame and reduces them to a single network. At each segment where routes overlap individual modes of transportation are summed up. Here the East Palo Alto network is computed. The line width is set by the "Go dutch" scenario.
 
 # In[9]:
 
@@ -262,7 +257,7 @@ plt.show()
 # 20956 East Palo Alto
 # 55282 Palo Alto
 # 73906 Stanford University
-epa_network = flow_data.to_frm("20956").reduce()
+epa_network = flow_data.to_frm("20956").network()
 
 # Compute linewidth
 epa_network["width"] = 1+15*epa_network["go_dutch"]/epa_network["go_dutch"].max()
@@ -291,7 +286,7 @@ plt.show()
 # 20956 East Palo Alto
 # 55282 Palo Alto
 # 73906 Stanford University
-pa_network = flow_data.to_frm("55282").reduce()
+pa_network = flow_data.to_frm("55282").network()
 
 # Compute linewidth
 pa_network["width"] = 1+15*pa_network["go_dutch"]/pa_network["go_dutch"].max()
@@ -320,10 +315,10 @@ plt.show()
 # 20956 East Palo Alto
 # 55282 Palo Alto
 # 73906 Stanford University
-su_network = flow_data.to_frm("73906").reduce()
+su_network = flow_data.to_frm("73906").network()
 
 # Compute linewidth
-su_network["width"] = 1+15*su_network["go_dutch"]/su_network["go_dutch"].max()
+su_network["width"] = 1+15*su_network["bike"]/su_network["bike"].max()
 
 # Plot network
 fig, ax = plt.subplots(figsize=(16,10))
@@ -335,7 +330,13 @@ place.loc[place["placefp"] == "73906"].boundary.plot(ax=ax, edgecolor="black", l
 su_network.plot(ax=ax, linewidth=su_network["width"])
 ctx.add_basemap(ax, crs=su_network.crs, source=ctx.providers.Stamen.TonerLite)
 ctx.add_basemap(ax, crs=su_network.crs, source=ctx.providers.Stamen.TonerLabels)
-plt.title("Bicycle routes to and from Stanford University under the 'Go Dutch' scenario")
+plt.title("Bicycle routes to and from Stanford University under current mode share")
 plt.axis('off')
 plt.show()
+
+
+# In[ ]:
+
+
+
 

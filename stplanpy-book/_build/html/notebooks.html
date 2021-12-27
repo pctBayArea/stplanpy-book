@@ -332,17 +332,21 @@ used in this notebook can be found on Github. The <code class="docutils literal 
 
 <span class="c1"># Correct centroid locations so they are close to a road</span>
 <span class="c1"># Google plex</span>
-<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00101155&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.0780525993605</span><span class="p">,</span> <span class="mf">37.42332894065777</span><span class="p">)</span>
+<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00101155&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.078052</span><span class="p">,</span> <span class="mf">37.423328</span><span class="p">)</span>
 <span class="c1"># Stanford research park</span>
-<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00100480&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.1451249513915</span><span class="p">,</span> <span class="mf">37.40713680668460</span><span class="p">)</span>
+<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00100480&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.145124</span><span class="p">,</span> <span class="mf">37.407136</span><span class="p">)</span>
 <span class="c1"># Facebook</span>
-<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00102130&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.1487037864525</span><span class="p">,</span> <span class="mf">37.48492337393505</span><span class="p">)</span>
+<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00102130&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.148703</span><span class="p">,</span> <span class="mf">37.484923</span><span class="p">)</span>
 <span class="c1"># San Antonio watershed</span>
-<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00103321&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">121.8452717956161</span><span class="p">,</span> <span class="mf">37.60284162184939</span><span class="p">)</span>
+<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00103321&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">121.845271</span><span class="p">,</span> <span class="mf">37.602841</span><span class="p">)</span>
 <span class="c1"># Tesla</span>
-<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00103023&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">121.9490506527106</span><span class="p">,</span> <span class="mf">37.50254728376085</span><span class="p">)</span>
+<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00103023&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">121.949050</span><span class="p">,</span> <span class="mf">37.502547</span><span class="p">)</span>
 <span class="c1"># Hayward</span>
-<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00103112&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.1225131055348</span><span class="p">,</span> <span class="mf">37.62298440136487</span><span class="p">)</span>
+<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00103112&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.122513</span><span class="p">,</span> <span class="mf">37.622984</span><span class="p">)</span>
+<span class="c1"># Pacifica </span>
+<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00102160&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.483845</span><span class="p">,</span> <span class="mf">37.611063</span><span class="p">)</span>
+<span class="c1"># Gilroy</span>
+<span class="n">taz_cent</span><span class="o">.</span><span class="n">corr_cent</span><span class="p">(</span><span class="s2">&quot;00101057&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mf">121.5119226</span><span class="p">,</span><span class="mf">37.025154</span><span class="p">)</span>
 
 <span class="c1"># Compute which taz lay inside a place and which part</span>
 <span class="n">taz</span> <span class="o">=</span> <span class="n">taz</span><span class="o">.</span><span class="n">in_place</span><span class="p">(</span><span class="n">place</span><span class="p">)</span>
@@ -383,10 +387,6 @@ used in this notebook can be found on Github. The <code class="docutils literal 
 
 <span class="c1"># Compute go_dutch scenario</span>
 <span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">go_dutch</span><span class="p">()</span>
-
-<span class="c1"># Convert to GeoDataFrame</span>
-<span class="n">flow_data</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">flow_data</span><span class="p">)</span>
-<span class="n">flow_data</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">set_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:6933&quot;</span><span class="p">)</span>
 
 <span class="c1"># Plot origin destination lines for distances less than 10km</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
@@ -436,7 +436,7 @@ used in this notebook can be found on Github. The <code class="docutils literal 
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>             name      bike  go_dutch    bike10  go_dutch10      all    all10
 0       Palo Alto  0.041619  0.144649  0.109430    0.350558  53581.0  18569.0
 2        Stanford  0.184371  0.160222  0.391057    0.333933  13104.0   5636.0
-5  East Palo Alto  0.039155  0.220233  0.071788    0.369756   5210.0   2786.0
+5  East Palo Alto  0.039155  0.220233  0.071788    0.369757   5210.0   2786.0
 </pre></div>
 </div>
 </div>
@@ -444,15 +444,14 @@ used in this notebook can be found on Github. The <code class="docutils literal 
 <p>The <code class="docutils literal notranslate"><span class="pre">route_lines</span></code> function computes the routes between Traffic Analysis Zones using the Cycle Streets routing engine. The <code class="docutils literal notranslate"><span class="pre">directness</span></code> function divides the length of a route by the length of the equivalend origin-destination line.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select routes shorter than 25km</span>
-<span class="n">flow_data</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">25000</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove TAZ without a cycling route</span>
+<span class="n">flow_data</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">rm_taz</span><span class="p">(</span><span class="s2">&quot;00103321&quot;</span><span class="p">)</span>
 
-<span class="c1"># Read the cyclestreets api key</span>
+<span class="c1"># Read the Cycle Streets API key</span>
 <span class="n">cyclestreets_key</span> <span class="o">=</span> <span class="n">cycle</span><span class="o">.</span><span class="n">read_key</span><span class="p">()</span>
 
 <span class="c1"># Compute routes</span>
-<span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">route_lines</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">cyclestreets_key</span><span class="p">)</span>
-<span class="n">flow_data</span><span class="o">.</span><span class="n">find_cent</span><span class="p">()</span>
+<span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">routes</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">cyclestreets_key</span><span class="p">)</span>
 
 <span class="c1"># Compute distances, gradients, and directness </span>
 <span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;distance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">distances</span><span class="p">()</span>
@@ -462,10 +461,6 @@ used in this notebook can be found on Github. The <code class="docutils literal 
 <span class="c1"># Compute go_dutch scenario</span>
 <span class="n">flow_data</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">go_dutch</span><span class="p">()</span>
 
-<span class="c1"># Convert to GeoDataFrame</span>
-<span class="n">flow_data</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">flow_data</span><span class="p">)</span>
-<span class="n">flow_data</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">set_crs</span><span class="p">(</span><span class="s2">&quot;EPSG:6933&quot;</span><span class="p">)</span>
-
 <span class="c1"># Plot routes</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
@@ -473,7 +468,7 @@ used in this notebook can be found on Github. The <code class="docutils literal 
 <span class="n">flow_data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;directness&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">flow_data</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLite</span><span class="p">)</span>
 <span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">flow_data</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLabels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;All routes for direct distances shorter than 25km &quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;All bicycle routes&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -483,14 +478,14 @@ used in this notebook can be found on Github. The <code class="docutils literal 
 <img alt="_images/notebooks_16_0.png" src="_images/notebooks_16_0.png" />
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">reduce</span></code> function combines all the different routes in a GeoDataFrame and reduces them to a single network. At each segment where routes overlap individual modes of transportation are summed up. Here the East Palo Alto network is computed. The line width is set by the “Go dutch” scenario.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">network</span></code> function combines all the different routes in a GeoDataFrame and reduces them to a single network. At each segment where routes overlap individual modes of transportation are summed up. Here the East Palo Alto network is computed. The line width is set by the “Go dutch” scenario.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Place codes</span>
 <span class="c1"># 20956 East Palo Alto</span>
 <span class="c1"># 55282 Palo Alto</span>
 <span class="c1"># 73906 Stanford University</span>
-<span class="n">epa_network</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">to_frm</span><span class="p">(</span><span class="s2">&quot;20956&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reduce</span><span class="p">()</span>
+<span class="n">epa_network</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">to_frm</span><span class="p">(</span><span class="s2">&quot;20956&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">network</span><span class="p">()</span>
 
 <span class="c1"># Compute linewidth</span>
 <span class="n">epa_network</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">15</span><span class="o">*</span><span class="n">epa_network</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">epa_network</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -522,7 +517,7 @@ used in this notebook can be found on Github. The <code class="docutils literal 
 <span class="c1"># 20956 East Palo Alto</span>
 <span class="c1"># 55282 Palo Alto</span>
 <span class="c1"># 73906 Stanford University</span>
-<span class="n">pa_network</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">to_frm</span><span class="p">(</span><span class="s2">&quot;55282&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reduce</span><span class="p">()</span>
+<span class="n">pa_network</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">to_frm</span><span class="p">(</span><span class="s2">&quot;55282&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">network</span><span class="p">()</span>
 
 <span class="c1"># Compute linewidth</span>
 <span class="n">pa_network</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">15</span><span class="o">*</span><span class="n">pa_network</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">pa_network</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
@@ -554,10 +549,10 @@ used in this notebook can be found on Github. The <code class="docutils literal 
 <span class="c1"># 20956 East Palo Alto</span>
 <span class="c1"># 55282 Palo Alto</span>
 <span class="c1"># 73906 Stanford University</span>
-<span class="n">su_network</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">to_frm</span><span class="p">(</span><span class="s2">&quot;73906&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reduce</span><span class="p">()</span>
+<span class="n">su_network</span> <span class="o">=</span> <span class="n">flow_data</span><span class="o">.</span><span class="n">to_frm</span><span class="p">(</span><span class="s2">&quot;73906&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">network</span><span class="p">()</span>
 
 <span class="c1"># Compute linewidth</span>
-<span class="n">su_network</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">15</span><span class="o">*</span><span class="n">su_network</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">su_network</span><span class="p">[</span><span class="s2">&quot;go_dutch&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">su_network</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">+</span><span class="mi">15</span><span class="o">*</span><span class="n">su_network</span><span class="p">[</span><span class="s2">&quot;bike&quot;</span><span class="p">]</span><span class="o">/</span><span class="n">su_network</span><span class="p">[</span><span class="s2">&quot;bike&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 
 <span class="c1"># Plot network</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
@@ -569,7 +564,7 @@ used in this notebook can be found on Github. The <code class="docutils literal 
 <span class="n">su_network</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="n">su_network</span><span class="p">[</span><span class="s2">&quot;width&quot;</span><span class="p">])</span>
 <span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">su_network</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLite</span><span class="p">)</span>
 <span class="n">ctx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">su_network</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">providers</span><span class="o">.</span><span class="n">Stamen</span><span class="o">.</span><span class="n">TonerLabels</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bicycle routes to and from Stanford University under the &#39;Go Dutch&#39; scenario&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Bicycle routes to and from Stanford University under current mode share&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
