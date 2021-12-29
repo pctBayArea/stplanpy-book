@@ -196,9 +196,9 @@ plt.show()
 taz[["bike", "go_dutch", "all"]] = taz.mode_share(flow_data)
 place[["bike", "go_dutch", "all"]] = place.mode_share(flow_data)
 
-# Compute mode share for trips shorter than 10km (6 miles)
-taz[["bike10", "go_dutch10", "all10"]] = taz.mode_share(flow_data.loc[flow_data["distance"] <= 10000])
-place[["bike10", "go_dutch10", "all10"]] = place.mode_share(flow_data.loc[flow_data["distance"] <= 10000])
+# Compute mode share for trips shorter than 7.5km (4.5 miles)
+taz[["bike75", "go_dutch75", "all75"]] = taz.mode_share(flow_data.loc[flow_data["distance"] <= 7500])
+place[["bike75", "go_dutch75", "all75"]] = place.mode_share(flow_data.loc[flow_data["distance"] <= 7500])
 
 # Plot data
 fig, ax = plt.subplots(figsize=(10,10))
@@ -211,7 +211,7 @@ plt.axis('off')
 plt.show()
 
 # Show mode shares
-print(place[["name", "bike", "go_dutch", "bike10", "go_dutch10", "all", "all10"]])
+print(place[["name", "bike", "go_dutch", "bike75", "go_dutch75", "all", "all75"]])
 
 
 # The `route_lines` function computes the routes between Traffic Analysis Zones using the Cycle Streets routing engine. The `directness` function divides the length of a route by the length of the equivalend origin-destination line. 
