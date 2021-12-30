@@ -9,10 +9,11 @@ Alto. Only commutes in the San Francisco Bay Area are considered.
 
 The source code for this package can be found on
 [github.com](https://github.com/pctBayArea/stplanpy) and documentation is
-available one
+available on
 [github.io](https://pctbayarea.github.io/stplanpy/source/stplanpy.html).
 
-This library can be installed using pip:
+This library is also hosted on [PyPi](https://pypi.org/project/stplanpy/) and
+can be installed using pip:
 
 `pip install stplanpy`
 

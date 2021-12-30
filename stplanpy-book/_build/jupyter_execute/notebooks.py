@@ -172,8 +172,9 @@ flow_data["geometry"] = flow_data.od_lines(taz_cent)
 flow_data["distance"] = flow_data.distances()
 flow_data["gradient"] = flow_data.gradient(taz_cent)
 
-# Compute go_dutch scenario
+# Compute go_dutch and ebike scenarios
 flow_data["go_dutch"] = flow_data.go_dutch()
+flow_data["ebike"] = flow_data.ebike()
 
 # Plot origin destination lines for distances less than 10km
 fig, ax = plt.subplots(figsize=(16,10))
@@ -193,17 +194,20 @@ plt.show()
 
 
 # Compute "bike", and "go_dutch" mode shares
-taz[["bike", "go_dutch", "all"]] = taz.mode_share(flow_data)
-place[["bike", "go_dutch", "all"]] = place.mode_share(flow_data)
+taz[["bike", "go_dutch", "ebike", "all"]] = taz.mode_share(flow_data, modes=["bike", "go_dutch", "ebike"])
+place[["bike", "go_dutch", "ebike", "all"]] = place.mode_share(flow_data, modes=["bike", "go_dutch", "ebike"])
 
 # Compute mode share for trips shorter than 7.5km (4.5 miles)
-taz[["bike75", "go_dutch75", "all75"]] = taz.mode_share(flow_data.loc[flow_data["distance"] <= 7500])
-place[["bike75", "go_dutch75", "all75"]] = place.mode_share(flow_data.loc[flow_data["distance"] <= 7500])
+taz[["bike75", "go_dutch75", "ebike75", "all75"]] = taz.mode_share(
+    flow_data.loc[flow_data["distance"] <= 7500], modes=["bike", "go_dutch", "ebike"])
+place[["bike75", "go_dutch75", "ebike75", "all75"]] = place.mode_share(
+    flow_data.loc[flow_data["distance"] <= 7500], modes=["bike", "go_dutch", "ebike"])
 
 # Plot data
 fig, ax = plt.subplots(figsize=(10,10))
 ax.set_aspect("equal")
-taz.loc[taz["placefp"].isin(places)].plot(ax=ax, column="bike", alpha=0.8, edgecolor='gray', linewidth=0.5, legend=True)
+taz.loc[taz["placefp"].isin(places)].plot(ax=ax, column="bike", alpha=0.8, 
+                                          edgecolor='gray', linewidth=0.5, legend=True)
 ctx.add_basemap(ax, crs=taz.crs, source=ctx.providers.Stamen.TonerLite)
 ctx.add_basemap(ax, crs=taz.crs, source=ctx.providers.Stamen.TonerLabels)
 plt.title("Bicycle mode share of traffic analysis zones in East Palo Alto, Palo Alto, and Stanford Univeristy")
@@ -211,7 +215,8 @@ plt.axis('off')
 plt.show()
 
 # Show mode shares
-print(place[["name", "bike", "go_dutch", "bike75", "go_dutch75", "all", "all75"]])
+print(place[["name", "bike", "go_dutch", "ebike", "all"]])
+print(place[["name", "bike75", "go_dutch75", "ebike75", "all75"]])
 
 
 # The `route_lines` function computes the routes between Traffic Analysis Zones using the Cycle Streets routing engine. The `directness` function divides the length of a route by the length of the equivalend origin-destination line. 
@@ -233,8 +238,9 @@ flow_data["distance"] = flow_data.distances()
 flow_data["gradient"] = flow_data.gradient(taz_cent)
 flow_data["directness"] = flow_data.directness()
 
-# Compute go_dutch scenario
+# Compute go_dutch and e-bike scenarios
 flow_data["go_dutch"] = flow_data.go_dutch()
+flow_data["ebike"] = flow_data.ebike()
 
 # Plot routes
 fig, ax = plt.subplots(figsize=(16,10))
@@ -257,7 +263,7 @@ plt.show()
 # 20956 East Palo Alto
 # 55282 Palo Alto
 # 73906 Stanford University
-epa_network = flow_data.to_frm("20956").network()
+epa_network = flow_data.to_frm("20956").network(modes=["bike", "go_dutch", "ebike"])
 
 # Compute linewidth
 epa_network["width"] = 1+15*epa_network["go_dutch"]/epa_network["go_dutch"].max()
@@ -286,7 +292,7 @@ plt.show()
 # 20956 East Palo Alto
 # 55282 Palo Alto
 # 73906 Stanford University
-pa_network = flow_data.to_frm("55282").network()
+pa_network = flow_data.to_frm("55282").network(modes=["bike", "go_dutch", "ebike"])
 
 # Compute linewidth
 pa_network["width"] = 1+15*pa_network["go_dutch"]/pa_network["go_dutch"].max()
@@ -315,10 +321,10 @@ plt.show()
 # 20956 East Palo Alto
 # 55282 Palo Alto
 # 73906 Stanford University
-su_network = flow_data.to_frm("73906").network()
+su_network = flow_data.to_frm("73906").network(modes=["bike", "go_dutch", "ebike"])
 
 # Compute linewidth
-su_network["width"] = 1+15*su_network["bike"]/su_network["bike"].max()
+su_network["width"] = 1+15*su_network["ebike"]/su_network["ebike"].max()
 
 # Plot network
 fig, ax = plt.subplots(figsize=(16,10))
